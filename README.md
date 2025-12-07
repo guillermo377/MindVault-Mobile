@@ -4,7 +4,11 @@
 
 **Mind Vault** is a secure Android application that generates unbreakable, unique passwords using SHA-256 cryptography. It is completely **stateless**, meaning it never stores, saves, or transmits your passwords to any cloud server.
 
-![Mind Vault Banner](https://github.com/guillermo377/MindVault-Mobile/assets/placeholder.png)
+<p align="center">
+  <img src="www/assets/MindVault_128.png" alt="Mind Vault Logo">
+</p>
+
+
 
 ## 🛡️ Why Mind Vault?
 Traditional password managers store your keys in a database (cloud or local). If that database is hacked, your secrets are exposed.
