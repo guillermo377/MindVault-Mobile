@@ -1,83 +1,66 @@
-# Mind Vault (Android MVP)
+# 🧠 Mind Vault - Stateless Password Generator (Android)
 
-This is the Android mobile application version of the Mind Vault Chrome Extension.
-It wraps the original HTML/JS/CSS logic in a Capacitor container to produce a native Android APK.
+> "Your mind is your fortress."
 
-## 📱 Project Details
-- **App Name:** Mind Vault
-- **Package ID:** `com.mindvault.app`
-- **Icon:** `MindVault_Logo.png`
-- **Technology:** HTML5, Vanilla JS, Capacitor 5
+**Mind Vault** is a secure Android application that generates unbreakable, unique passwords using SHA-256 cryptography. It is completely **stateless**, meaning it never stores, saves, or transmits your passwords to any cloud server.
 
-## 🛠 Prerequisites (REQUIRED)
-Before you can build the app, you **MUST** install the following tools:
+![Mind Vault Banner](https://github.com/guillermo377/MindVault-Mobile/assets/placeholder.png)
 
-1.  **Node.js (LTS Version)** - **MISSING ON YOUR SYSTEM**
-    *   **Download:** [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
-    *   *Why?* Required to install Capacitor and manage project dependencies (`npm`).
-    *   **Verify:** After installing, restart your terminal and run `node -v` and `npm -v`.
+## 🛡️ Why Mind Vault?
+Traditional password managers store your keys in a database (cloud or local). If that database is hacked, your secrets are exposed.
 
-2.  **Android Studio**
-    *   **Download:** [https://developer.android.com/studio](https://developer.android.com/studio)
-    *   *Why?* Required to compile the final APK file.
-    *   **Setup:** Install it and ensure the "Android SDK" component is selected.
+**Mind Vault works differently:**
 
-## 🚀 How to Build & Run
+*   **No Database:** Passwords are calculated mathematically on-the-fly.
+*   **No Cloud:** Everything happens locally on your device using the Web Crypto API.
+*   **Deterministic:** `Master Seed` + `Service Name` will always generate the same password.
 
-Once Node.js is installed:
-    ```bash
-    cd android_app
-    ```
+## ✨ Key Features
 
-2.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
+*   **Cloudless Sync:** Access your passwords on any device without internet. Since the math is deterministic, you get the same password everywhere just by knowing your secret phrase.
+*   **Physical Entry Mode:** Toggle a special "Big Text" display mode designed for manually typing passwords into other devices (like consoles, smart TVs, or air-gapped PCs).
+*   **Military-Grade Encryption:** Uses **SHA-256** to hash your inputs.
+*   **Stateless & Offline:** Zero data storage. It works completely offline (Airplane mode friendly).
+*   **"Safe Set" Characters:** Generates passwords compatible with 99% of websites (letters, numbers, and symbols like `!@#$%*-_+=`).
+*   **Anti-Typo Safety:** Includes a visibility toggle that auto-hides after 5 seconds to prevent shoulder surfing.
+*   **Multi-Language:** Native support for English 🇺🇸 and Spanish 🇪🇸 (Auto-detects device language).
 
-3.  **Initialize Android Platform:**
-    ```bash
-    npx cap add android
-    ```
+## 🚀 Installation
 
-4.  **Sync Web Assets:**
-    ```bash
-    npx cap sync
-    ```
+### 📲 Google Play Store
+[**Download on Google Play**](https://play.google.com/store/apps/details?id=com.mindvault.app) *(Link coming soon!)*
 
-5.  **Open in Android Studio:**
-    ```bash
-    npx cap open android
-    ```
-    *From Android Studio, you can run the app on an Emulator or a Physical Device, or build the Signed APK via `Build > Generate Signed Bundle / APK`.*
+### 🛠️ Manual Installation (APK)
+1.  Download the latest `.apk` from the [Releases](https://github.com/guillermo377/MindVault-Mobile/releases) page.
+2.  Open the file on your Android device.
+3.  Allow installation from "Unknown Sources" if prompted.
 
-## ✅ Verification & Guardrails
+## 🛠️ How it Works (The Math)
+The generation process is transparent and auditable:
 
-### A. SHA-256 Determinism (Critical)
-The app uses the exact same logic as the extension.
-**Test:**
-- **Seed:** `test1234`
-- **Service:** `gmail.com`
-- **Expected Result:** (Should match the Chrome Extension output exactly)
+1.  **Input:** Takes your Master Seed and the Service Name (e.g., "gmail.com").
+2.  **Salting:** Concatenates them: `Seed` || `Service`.
+3.  **Hashing:** Applies **SHA-256** to the result string.
+4.  **Mapping:** Converts the resulting hash bytes into a human-readable string using a custom "Safe Character Set" to ensure strong entropy.
 
-### B. Copy Functionality
-- Click "Generate Password".
-- Click "Copy".
-- Paste into another app to verify.
+## 🧠 Advanced Security Arguments
+Mind Vault is built to defend against modern vulnerabilities:
 
-### C. Bilingual Support
-- Tap the 🇺🇸 / 🇪🇸 flags to switch languages.
-- Verify all labels update instantly.
+*   **2FA is Not Enough:** Two-Factor Authentication (2FA) via SMS can be compromised (SIM swapping). Your complex, unique password remains the crucial first line of defense.
+*   **Biometrics are Permanent:** You cannot change your fingerprint if it is compromised. Mind Vault allows you to change your Master Seed instantly if a breach is suspected, offering **revocable security**.
 
-### D. Offline Capability
-- Turn on **Airplane Mode**.
-- Open the App.
-- Generate a password. It should work 100% offline.
+## 🔒 Security Architecture
+*   **Permissions:** The app requests minimal permissions. Note that the `INTERNET` permission is technically required by the underlying Android WebView component to render the UI, but **no data is ever sent** by the application logic.
+*   **Local Processing:** All logic runs locally in JavaScript.
+*   **Memory Hygiene:** The app does not cache passwords in persistent storage. Once you close the app, the data is gone.
 
-### E. Donation Link
-- Click "Donate via PayPal".
-- It should open the system browser.
+## ☕ Support the Project
+Mind Vault is free and open source. If you find it useful, you can support its development:
 
-## 📂 Project Structure
-- `www/`: Contains the web source code (HTML, CSS, JS).
-- `capacitor.config.json`: Capacitor configuration.
-- `android/`: Native Android project files (generated after `npx cap add android`).
+[💙 Donate via PayPal](https://paypal.me/MindVaultDev)
+
+## 📄 License
+This project is licensed under the **GPLv3 License** - see the LICENSE file for details.
+
+---
+*Created with ❤️ for privacy enthusiasts.*
