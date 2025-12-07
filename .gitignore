@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.DS_Store
+.env
+*.log
+
+# Mobile build outputs
+android/app/build/
+android/app/release/
+android/.gradle
+android/local.properties
+
+# Keys (Double safety)
+*.jks
+*.keystore
+key.json
+google-services.json

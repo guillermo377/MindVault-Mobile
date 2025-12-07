@@ -1,0 +1,6 @@
+{
+    "appId": "com.mindvault.app",
+    "appName": "Mind Vault",
+    "webDir": "www",
+    "bundledWebRuntime": false
+}

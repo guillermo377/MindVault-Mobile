@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Mind Vault</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header-row">
+      <h2>Mind Vault <span style="font-size:0.6em; color:#888;">SHA-256</span></h2>
+      <div class="flags">
+        <span id="langEs" class="flag-btn" title="Español">🇪🇸</span>
+        <span id="langEn" class="flag-btn active" title="English">🇺🇸</span>
+      </div>
+    </div>
+
+    <label for="seedInput" data-lang-key="seedLabel">Master Seed (Your Secret):</label>
+
+    <div class="password-container">
+      <input type="password" id="seedInput" data-lang-placeholder="seedPlaceholder"
+        placeholder="Enter your passphrase...">
+      <span id="toggleSeed" class="toggle-password" title="Show/Hide Password">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </span>
+    </div>
+
+    <label for="serviceInput" data-lang-key="serviceLabel">Service Name (Domain):</label>
+    <input type="text" id="serviceInput" data-lang-placeholder="servicePlaceholder" placeholder="e.g. gmail.com">
+
+    <div class="options-row">
+      <label for="lengthInput" data-lang-key="lengthLabel">Length:</label>
+
+      <div class="length-control-group">
+        <button id="btnLess" class="btn-adjust">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+        <input type="number" id="lengthInput" value="16" min="4" max="44" readonly>
+        <button id="btnMore" class="btn-adjust">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="tooltip">
+        <span class="icon-question">?</span>
+        <span class="tooltiptext" data-lang-key="tooltipHtml">
+          Standard length (16 chars) works for most sites.
+          Change only if required.
+          <strong>Important:</strong> You must remember the specific length for this site to regenerate the password.
+        </span>
+      </div>
+
+      <div class="switch-container">
+        <div class="tooltip">
+          <span class="icon-question">?</span>
+          <span class="tooltiptext" style="width: 180px; margin-left: -90px;" data-lang-key="physicalTooltip">
+            Optimizes display for manual entry on other devices.
+          </span>
+        </div>
+        <label class="switch" title="Physical Entry Mode">
+          <input type="checkbox" id="togglePhysical">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <button id="btnGenerate" data-lang-key="btnGenerate">Generate Password</button>
+
+    <div class="result-area">
+      <input type="text" id="passwordOutput" readonly>
+      <div id="physicalPasswordOutput" style="display: none;"></div>
+      <div class="copy-row">
+        <button id="btnCopy" data-lang-key="btnCopy">Copy</button>
+        <div id="timerContainer" class="timer-container" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span id="timerCount">30s</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="status"></div>
+    <div id="statusPhysical"></div>
+
+    <div class="footer">
+      <a id="donateLink" href="https://paypal.me/MindVaultDev" target="_blank" title="Support via PayPal">
+        ❤️ <span data-lang-key="donateText">Donate via PayPal</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+
+</html>

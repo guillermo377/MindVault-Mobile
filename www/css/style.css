@@ -1,0 +1,453 @@
+/* --- GENERAL CONFIGURATION --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  /* Center on larger screens */
+  background-color: #f4f4f9;
+  padding: 15px;
+  color: #333;
+  min-height: 100vh;
+  /* Full height */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Spacing between elements */
+}
+
+/* --- HEADER & FLAGS --- */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  /* Title on left, flags on right */
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+.flags {
+  display: flex;
+  gap: 10px;
+}
+
+.flag-btn {
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.4;
+  /* Faded when inactive */
+  transition: opacity 0.2s, transform 0.2s;
+  filter: grayscale(100%);
+  /* Black and white when inactive */
+}
+
+.flag-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  /* Slight zoom effect */
+  filter: grayscale(0%);
+  /* Color on hover */
+}
+
+.flag-btn.active {
+  opacity: 1;
+  filter: grayscale(0%);
+  /* Full color for active language */
+  border-bottom: 2px solid #3498db;
+  /* Blue underline */
+}
+
+/* --- INPUTS & LABELS --- */
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  /* 16px prevents zoom on iOS inputs */
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db;
+  /* Blue border on focus */
+}
+
+/* --- PASSWORD INPUT WITH EYE ICON --- */
+.password-container {
+  position: relative;
+  /* Needed to position the eye icon absolutely inside */
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+  /* Space on the right so text doesn't overlap the eye */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Perfectly centered vertically */
+  cursor: pointer;
+  color: #888;
+  /* Grey color for the SVG lines */
+  opacity: 0.6;
+  user-select: none;
+  /* Prevents selecting the icon as text */
+  transition: opacity 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+  color: #3498db;
+  /* Blue on hover */
+}
+
+/* --- LENGTH INPUT & TOOLTIP --- */
+.options-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* Length Control Group */
+.length-control-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+}
+
+#lengthInput {
+  width: 45px;
+  padding: 8px 5px;
+  text-align: center;
+  margin: 0;
+  -moz-appearance: textfield;
+  /* Remove default arrows Firefox */
+}
+
+/* Remove default arrows Chrome/Safari/Edge */
+#lengthInput::-webkit-outer-spin-button,
+#lengthInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-adjust {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  font-weight: bold;
+}
+
+.btn-adjust:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-adjust:active {
+  background-color: #d0d0d0;
+  transform: translateY(1px);
+}
+
+/* --- TOGGLE SWITCH --- */
+.switch-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+  /* Space between switch and tooltip */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #3498db;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #3498db;
+}
+
+input:checked+.slider:before {
+  transform: translateX(14px);
+}
+
+.switch-icon {
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  cursor: help;
+}
+
+/* The question mark circle */
+.icon-question {
+  background-color: #ccc;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.tooltip:hover .icon-question {
+  background-color: #3498db;
+}
+
+/* The actual text bubble (hidden by default) */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+
+  /* Positioning above the icon */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -110px;
+  /* Centers the tooltip */
+
+  /* Animation */
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* The little arrow at the bottom of the bubble */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --- ACTION BUTTONS --- */
+button {
+  padding: 12px;
+  /* Larger touch target */
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#btnCopy {
+  background-color: #27ae60;
+  /* Green color for Copy button */
+  flex-grow: 1;
+  /* Take available space */
+}
+
+#btnCopy:hover {
+  background-color: #219150;
+}
+
+.copy-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.timer-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e74c3c;
+  /* Red warning color */
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.timer-container svg {
+  stroke: #e74c3c;
+}
+
+#status {
+  text-align: center;
+  font-size: 12px;
+  min-height: 15px;
+  color: #27ae60;
+  margin-top: 5px;
+}
+
+#statusPhysical {
+  text-align: center;
+  font-size: 11px;
+  color: #e67e22;
+  /* Orange for attention */
+  min-height: 15px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Physical Mode Output Display */
+#physicalPasswordOutput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  /* Slightly larger for readability */
+  background-color: #f9f9f9;
+  min-height: 42px;
+  /* Match input height */
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-family: monospace;
+}
+
+.chunk-separator {
+  font-weight: 900;
+  margin: 0 8px;
+  color: #e67e22;
+  /* Vivid Orange */
+  font-size: 1.2em;
+  /* Larger than text */
+  user-select: none;
+  /* Prevent selection/copying */
+}
+
+/* --- FOOTER (SUBTLE LINK STYLE) --- */
+.footer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #999;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+#donateLink {
+  color: #7f8c8d;
+  /* Discrete Grey */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+  background: none;
+  box-shadow: none;
+  padding: 5px;
+}
+
+#donateLink:hover {
+  color: #e74c3c;
+  /* Turns Red on hover to match the heart */
+  transform: scale(1.05);
+  /* Slight zoom */
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#donateLink:active {
+  transform: scale(0.95);
+  color: #c0392b;
+}

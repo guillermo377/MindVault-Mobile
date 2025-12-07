@@ -1,0 +1,23 @@
+{
+  "name": "mind-vault-mobile",
+  "version": "1.0.0",
+  "description": "Mind Vault Android App",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step needed for vanilla JS'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mind-vault",
+    "password",
+    "generator",
+    "android"
+  ],
+  "author": "Mind Vault Dev",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/cli": "^5.0.0"
+  }
+}
