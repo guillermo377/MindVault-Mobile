@@ -1,19 +1,19 @@
-# 🧠 Mind Vault - Stateless Password Generator (Android)
+# 🧠 MindVault - Stateless Password Generator (Android)
 
 > "Your mind is your fortress."
 
-**Mind Vault** is a secure Android application that generates unbreakable, unique passwords using SHA-256 cryptography. It is completely **stateless**, meaning it never stores, saves, or transmits your passwords to any cloud server.
+**MindVault** is a secure Android application that generates unbreakable, unique passwords using SHA-256 cryptography. It is completely **stateless**, meaning it never stores, saves, or transmits your passwords to any cloud server.
 
 <p align="center">
-  <img src="www/assets/MindVault_128.png" alt="Mind Vault Logo">
+  <img src="www/assets/MindVault_128.png" alt="MindVault Logo">
 </p>
 
 
 
-## 🛡️ Why Mind Vault?
+## 🛡️ Why MindVault?
 Traditional password managers store your keys in a database (cloud or local). If that database is hacked, your secrets are exposed.
 
-**Mind Vault works differently:**
+**MindVault works differently:**
 
 *   **No Database:** Passwords are calculated mathematically on-the-fly.
 *   **No Cloud:** Everything happens locally on your device using the Web Crypto API.
@@ -48,10 +48,10 @@ The generation process is transparent and auditable:
 4.  **Mapping:** Converts the resulting hash bytes into a human-readable string using a custom "Safe Character Set" to ensure strong entropy.
 
 ## 🧠 Advanced Security Arguments
-Mind Vault is built to defend against modern vulnerabilities:
+MindVault is built to defend against modern vulnerabilities:
 
 *   **2FA is Not Enough:** Two-Factor Authentication (2FA) via SMS can be compromised (SIM swapping). Your complex, unique password remains the crucial first line of defense.
-*   **Biometrics are Permanent:** You cannot change your fingerprint if it is compromised. Mind Vault allows you to change your Master Seed instantly if a breach is suspected, offering **revocable security**.
+*   **Biometrics are Permanent:** You cannot change your fingerprint if it is compromised. MindVault allows you to change your Master Seed instantly if a breach is suspected, offering **revocable security**.
 
 ## 🔒 Security Architecture
 *   **Permissions:** The app requests minimal permissions. Note that the `INTERNET` permission is technically required by the underlying Android WebView component to render the UI, but **no data is ever sent** by the application logic.
@@ -59,7 +59,7 @@ Mind Vault is built to defend against modern vulnerabilities:
 *   **Memory Hygiene:** The app does not cache passwords in persistent storage. Once you close the app, the data is gone.
 
 ## ☕ Support the Project
-Mind Vault is free and open source. If you find it useful, you can support its development:
+MindVault is free and open source. If you find it useful, you can support its development:
 
 [💙 Donate via PayPal](https://paypal.me/MindVaultDev)
 

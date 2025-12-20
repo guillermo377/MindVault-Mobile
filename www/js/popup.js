@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
             statusGen: "Generated for",
             statusCopied: "Password Copied!",
             statusPhysicalMsg: "Physical entry mode: Ignore orange hyphens.",
-            physicalTooltip: "Optimizes display for manual entry on other devices."
+            physicalTooltip: "Optimizes display for manual entry on other devices.",
+            appName: "MindVault"
         },
         es: {
             seedLabel: "Semilla Maestra (Tu Secreto):",
@@ -64,9 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
             statusReq: "Falta la Semilla Maestra o el Servicio.",
             statusGen: "Generado para",
             statusCopied: "¡Copiado al portapapeles!",
-            statusCopied: "¡Copiado al portapapeles!",
             statusPhysicalMsg: "Modo físico: Ignorar guiones naranjas.",
-            physicalTooltip: "Actívalo para copiar manualmente en otros dispositivos."
+            physicalTooltip: "Actívalo para copiar manualmente en otros dispositivos.",
+            appName: "MindVault"
         }
     };
 
